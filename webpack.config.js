@@ -1,4 +1,5 @@
 const path = require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   /*发布模式
@@ -11,5 +12,23 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),/*默认路径*/
     filename: '[name].[contenthash].js'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'LDoFun',
+      template: 'src/index.html'
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   }
 }
+
+
+
+
